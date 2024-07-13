@@ -1,11 +1,12 @@
-import React from 'react'
+import React from 'react';
+import HeroSection from '../components/specific/HeroSection/HeroSection';
 
 function Index() {
   return (
-    <div>
-      
-    </div>
+    <>
+        <HeroSection />
+    </>
   )
 }
 
-export default Index
+export default Index;
