@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-function TextInput({ onNameChange }) {
+function TextInput({ onNameChange, error }) {
     const [name, setName] = useState('');
 
     const handleChange = (e) => {
@@ -10,18 +10,18 @@ function TextInput({ onNameChange }) {
   
 
   return (
-    <div style={{width: '100%'}} className='div-input'>
-
-    <input
-          type="text"
-          id="name"
-          placeholder='Enter Full Name'
-          value={name}
-          onChange={handleChange}
-          required
-        />
-    
-    </div>
+    <div style={{ width: '100%' }} className='div-input'>
+            <input
+                type="text"
+                id="name"
+                placeholder='Enter Full Name'
+                value={name}
+                onChange={handleChange}
+                required
+                className={error ? 'error' : ''}
+            />
+            {error && <><br/> <small className="error-message">{error}</small></>}
+        </div>
   )
 }
 

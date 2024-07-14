@@ -4,7 +4,6 @@ const BASE_URL = "http://localhost:8000";
 
 async function generatePDF(data) {
     try {
-        alert();
         const response = await axios.post(`${BASE_URL}/generate`, data, {
             responseType: 'blob'
         });
@@ -16,7 +15,7 @@ async function generatePDF(data) {
         const a = document.createElement('a');
         a.style.display = 'none';
         a.href = url;
-        a.download = `Thanks${data.name}! - CF365.pdf`;
+        a.download = `Thanks ${data.name}! - CF365.pdf`;
         document.body.appendChild(a);
         a.click();
 
