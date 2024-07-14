@@ -1,8 +1,12 @@
 import React, { useState } from 'react'
 
-function TextInput() {
+function TextInput({ onNameChange }) {
     const [name, setName] = useState('');
 
+    const handleChange = (e) => {
+        setName(e.target.value);
+        onNameChange(e.target.value);
+    };
   
 
   return (
@@ -13,7 +17,7 @@ function TextInput() {
           id="name"
           placeholder='Enter Full Name'
           value={name}
-          onChange={(e) => setName(e.target.value)}
+          onChange={handleChange}
           required
         />
     
