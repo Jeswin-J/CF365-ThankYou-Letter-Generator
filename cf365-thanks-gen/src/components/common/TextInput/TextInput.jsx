@@ -11,7 +11,7 @@ function TextInput() {
     <input
           type="text"
           id="name"
-          placeholder='Enter Your Full Name'
+          placeholder='Enter Full Name'
           value={name}
           onChange={(e) => setName(e.target.value)}
           required

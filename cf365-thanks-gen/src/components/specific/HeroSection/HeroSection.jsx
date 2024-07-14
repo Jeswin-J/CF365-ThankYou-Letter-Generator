@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { initFireworks } from '../../../utils/fireworks';
-import Button from '../../common/Button/Button';
 import BlurCard from '../../common/BlurCard/BlurCard';
 import { Container, Row, Col } from 'react-bootstrap';
 
