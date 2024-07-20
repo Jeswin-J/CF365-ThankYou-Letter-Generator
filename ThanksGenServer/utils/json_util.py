@@ -6,6 +6,6 @@ def read_json(file_path):
             data = json.load(file)
             return data
     except FileNotFoundError:
-        raise FileNotFoundError(f"The file {file_path} was not found.")
+        raise FileNotFoundError(f"Member Data File not found.")
     except json.JSONDecodeError:
-        raise ValueError(f"The file {file_path} is not a valid JSON file.")
+        raise ValueError(f"Not a valid JSON file.")
