@@ -5,29 +5,35 @@ import "../../../assets/styles/main.css";
 import Button from '../Button/Button';
 import TextInput from '../TextInput/TextInput';
 import { generatePDF } from '../../../services/genApi';
-import { validateName } from '../../../utils/formValidator';
+import { validateRollNumber } from '../../../utils/formValidator';
 
 const BlurCard = () => {
-    const [name, setName] = useState('');
+    const [rollNum, setRollNum] = useState('');
     const [error, setError] = useState('');
+    const [support, setSupport] = useState('');
 
     const handleButtonClick = async () => {
         try {
-            const trimmedName = name.trim();
-            if (!validateName(trimmedName)) {
-                setError('Please enter a valid Name!');
+            const trimmedRoll = rollNum.trim();
+            if (!validateRollNumber(trimmedRoll)) {
+                setError('Please enter a valid Roll Number!');
                 return;
             }
 
             const inputData = {
-                name: trimmedName,
+                roll_num: trimmedRoll,
             };
 
-            await generatePDF(inputData);
-            setName('');
+            setError('');
+            setRollNum('');
+            const success = await generatePDF(inputData);
+
+            if(success === -1){
+                setSupport('Thank You for your Support!');
+            }
 
         } catch (error) {
-            console.error('Error generating PDF:', error);
+            setError('Error Generating PDF.');
         }
     };
 
@@ -37,9 +43,9 @@ const BlurCard = () => {
                 <Card.Title className='text-center' style={{fontSize: "28px"}}>Heyy! It's CF365 Celebration!</Card.Title>
                 <br/>
                 <Card.Text>
-                We've sparked imagination, inspired innovation, and coded a brighter future together!  As a small mark of our gratitude, here it is!
+                    We've sparked imagination, inspired innovation, and coded a brighter future together! As a small mark of our gratitude, here it is!
                 </Card.Text>
-                <TextInput value={name} onNameChange={setName} error={error}/>
+                <TextInput value={rollNum} onNameChange={setRollNum} error={error} support={support} />
                 <Button onClick={handleButtonClick} />
             </Card.Body>
         </Card>

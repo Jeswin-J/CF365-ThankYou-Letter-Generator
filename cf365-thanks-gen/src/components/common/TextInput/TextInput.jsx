@@ -1,28 +1,26 @@
-import React, { useState } from 'react'
+import React from 'react';
 
-function TextInput({ onNameChange, error }) {
-    const [name, setName] = useState('');
-
+function TextInput({ value, onNameChange, error, support }) {
     const handleChange = (e) => {
-        setName(e.target.value);
         onNameChange(e.target.value);
     };
-  
 
-  return (
-    <div style={{ width: '100%' }} className='div-input'>
+    return (
+        <div style={{ width: '100%' }} className='div-input'>
             <input
                 type="text"
-                id="name"
-                placeholder='Enter Full Name'
-                value={name}
+                id="rollNum"
+                placeholder='Enter Roll Number'
+                value={value}
                 onChange={handleChange}
                 required
-                className={error ? 'error' : ''}
+                className={`${error ? 'error' : ''} ${support ? 'support' : ''}`}
+
             />
-            {error && <><br/> <small className="error-message">{error}</small></>}
+            {error && <><br/><small className="error-message">{error}</small></>}
+            {support && <><br/><small className="support-message">{support}</small></>}
         </div>
-  )
+    );
 }
 
-export default TextInput
+export default TextInput;

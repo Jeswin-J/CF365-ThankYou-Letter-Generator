@@ -112,3 +112,7 @@ button:active {
 .error-message{
     color: rgb(255, 151, 151);
 }
+
+.support-message{
+    color: rgb(168, 255, 151);
+}

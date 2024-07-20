@@ -1,9 +1,11 @@
-function validateName(fullName) {
-    if (!fullName) {
+function validateRollNumber(rollNumber) {
+    if (!rollNumber) {
         return false; 
     }
 
-    if (!/^[a-zA-Z\s]+$/.test(fullName)) {
+    const rollNumberPattern = /^20\d{2}(PEC|PIT)[A-Z]{2}\d{3}$/;
+
+    if (!rollNumberPattern.test(rollNumber)) {
         return false;
     }
 
@@ -11,5 +13,5 @@ function validateName(fullName) {
 }
 
 export {
-    validateName,
+    validateRollNumber,
 }

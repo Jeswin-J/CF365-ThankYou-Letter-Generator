@@ -20,7 +20,12 @@ app.add_middleware(
 async def generate(data : Dict):
     try:
         file_path = await generate_letter(data)
-        return FileResponse(file_path, media_type='application/pdf', filename='generated_letter.pdf')
+        
+        if file_path is None:
+            print("PDF generation failed!! NOT A CODERS FORUM MEMBER!.")
+            return {"error": "Thank you for showing us your Support!"}
+        
+        return FileResponse(file_path, media_type='application/pdf')
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Failed to generate letter: {str(e)}")
 
