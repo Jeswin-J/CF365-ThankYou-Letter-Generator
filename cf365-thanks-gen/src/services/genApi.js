@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = "http://localhost:8000";
+const BASE_URL = "http://13.233.90.226:8000";
 
 async function generatePDF(data) {
     try {
