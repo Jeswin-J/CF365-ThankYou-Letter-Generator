@@ -3,7 +3,8 @@ function validateRollNumber(rollNumber) {
         return false; 
     }
 
-    const rollNumberPattern = /^20\d{2}(PEC|PIT)[A-Z]{2}\d{3}$/;
+    // const rollNumberPattern = /^20\d{2}(PEC|PIT)[A-Z]{2}\d{3}$/;
+    const rollNumberPattern = /^20\d{2}(PEC|PIT)(CS|CB)\d{3}$/;
 
     if (!rollNumberPattern.test(rollNumber)) {
         return false;

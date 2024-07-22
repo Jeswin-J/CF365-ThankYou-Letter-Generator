@@ -14,8 +14,9 @@ const BlurCard = () => {
 
     const handleButtonClick = async () => {
         try {
-            const trimmedRoll = rollNum.trim();
+            const trimmedRoll = rollNum.trim().toUpperCase();
             if (!validateRollNumber(trimmedRoll)) {
+                setSupport('');
                 setError('Please enter a valid Roll Number!');
                 return;
             }
@@ -29,10 +30,12 @@ const BlurCard = () => {
             const success = await generatePDF(inputData);
 
             if(success === -1){
+                setError('');
                 setSupport('Thank You for your Support!');
             }
 
         } catch (error) {
+            setSupport('');
             setError('Error Generating PDF.');
         }
     };
